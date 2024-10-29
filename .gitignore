@@ -1,0 +1,5 @@
+# Below are the files to not include in node js project
+
+node_modules
+npm-debug.log
+Node_js.code-workspace
