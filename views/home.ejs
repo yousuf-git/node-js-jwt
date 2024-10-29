@@ -1,74 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                clifford: '#da373d',
-              }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
           }
         }
-      </script>
-      <style type="text/tailwindcss">
-        @layer utilities {
+      }
+    }
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
           .content-auto {
             content-visibility: auto;
           }
         }
       </style>
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-      <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
-    <link href="./output.css" rel="stylesheet">
-    <title>Home Page</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+  <link href="./output.css" rel="stylesheet">
+  <title>Home Page</title>
 </head>
+
 <body class="bg-gray-900 font-[Poppins] ">
   <nav class="bg-white border-gray-200">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-    <div>
-      <!-- <i class="bi bi-house-door-fill" style="width: 40;"></i> -->
+      <div>
+        <!-- <i class="bi bi-house-door-fill" style="width: 40;"></i> -->
         <span class="self-center text-2xl font-semibold whitespace-nowrap">Home Page</span>
-     </div>
+      </div>
 
-    <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
-      <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
-        <li>
-          <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 " aria-current="page">Home</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700  ">About</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 ">Services</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d">Pricing</a>
-        </li>
-        <li>
-          <a href="#" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 ">Contact</a>
-        </li>
-      </ul>
-    </div>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-language">
+        <ul
+          class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+          <li>
+            <a href="#"
+              class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 "
+              aria-current="page">Home</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700  ">About</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 ">Services</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 d">Pricing</a>
+          </li>
+          <li>
+            <a href="#"
+              class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 ">Contact</a>
+          </li>
+          <li>
+            <button id="logout-btn">
+              <!-- Add logout icon on which cursor should be changed on hover -->
+              <i class="bi bi-box-arrow-right text-2xl"></i>
+              <span class="">Logout</span>
+            </button>
+
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-    <div id="home" class=" text-center text-6xl font-bold mt-28">
-        <h1 class="text-white place-content-center ">Welcome to Home page</h1>
-        <p class="text-white text-xl font-medium mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis, necessitatibus quaerat </p>
-    </div>
-    <script>
-      // Before returning this page to client, get the JWT token from the local storage and verify it with the server
-      // If the token is valid, show the home page otherwise redirect to login page
-      // const token = localStorage.getItem('token');
-      // if (!token) {
-      //   window.location.href = '/login';
-      // }
+  <div id="home" class=" text-center text-6xl font-bold mt-28">
+    <h1 class="text-white place-content-center ">Welcome to Home page</h1>
+    <p class="text-white text-xl font-medium mt-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis,
+      necessitatibus quaerat </p>
+  </div>
+  <script>
+    // Add event listener to logout button
+    // Add action listner to the logout button to send get request on /logout
+    document.querySelector('#logout-btn').addEventListener('click', async () => {
+      console.log("Logout button clicked");
 
-    </script>
+      const response = await fetch('/logout', {
+        method: 'POST',
+      });
+      // if status code is 200, redirect to login page
+      if (response.status === 200) {
+        window.location.href = '/login';
+      }
+    });
+
+  </script>
 </body>
+
 </html>

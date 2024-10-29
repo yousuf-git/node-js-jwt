@@ -148,7 +148,17 @@ app.post("/auth", authenticateJWT, (req, res) => {
 })
 
 app.get("/login", (req, res) => {
+  console.log("Redndering Login...");
+  
   res.render("login")
+});
+
+// On logout remove the token from the cookie and redirect to login page
+app.post("/logout", (req, res) => {
+  res.clearCookie('token');
+  // res.redirect("/login");
+  // return status 200
+  res.status(200).send("Logged out successfully");
 });
 
 app.get("/signup", (req, res) => {
@@ -192,7 +202,20 @@ app.post("/signup", emailValidator, async (req, res) => {
 
       // Insert user data into the collection
       // const userdata = await collection.insertMany(data);
-      const userdata = await collection.insertOne(data);
+      console.log(data);
+      
+      // const userdata = await collection.insertOne(data);
+      
+
+      //
+      // Create a new instance of the collection model
+      const newUser = new collection(data);
+      
+      // Use .save() to insert a single document
+      await newUser.save();
+
+      // use insertMany
+      // const userdata = await collection.insertMany(data);
       res.redirect("/login");
     }
   }
